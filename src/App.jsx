@@ -1,20 +1,17 @@
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import Card from './components/Card/Card';
-
-const wrapper = {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh',
-};
+import EmptyCard from './components/EmptyCard/EmptyCard';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 
 const App = () => {
     return (
-        <div style={wrapper}>
-            <Header />
-            <Card />
-            <Footer />
-        </div>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<EmptyCard />} />
+                <Route path="card/:holiday" element={<Card />} />
+            </Route>
+            <Route path="singleCard/:idText/:idImg" element={<Card />} />
+        </Routes>
     );
 };
 
